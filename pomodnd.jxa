@@ -1,0 +1,37 @@
+function run(input, parameters) {
+	var url = "pomodoro-tracker.com"
+	var app = Application.currentApplication()
+    app.includeStandardAdditions = true
+
+    var chrome = Application('Google Chrome')
+    
+
+    var tab;
+    var windows = chrome.windows;
+	for (i=0; i<windows.length; i++){
+        var tabs = windows[i].tabs;
+        for(j=0; j<tabs.length; j++){
+            if(tabs[j].url().match(url)) {
+                tab = tabs[j]
+				break
+            }
+        }
+	}
+
+
+    if(tab == null) {
+        var window = chrome.Window().make()
+        tab = window.tabs[0];
+    }
+
+    var isLoaded = 0
+    tab.url = "https://"+url
+    for(i=0; i<60 && isLoaded<=0; i++) {
+        isLoaded = tab.execute({javascript: "[...document.querySelectorAll('button')].length;"})
+        delay(0.5)
+    }
+    chrome.activate()
+    tab.execute({javascript: "[...document.querySelectorAll('button')].filter(b=>b.textContent.includes('START'))[0].click();"})
+
+	return input;
+}
