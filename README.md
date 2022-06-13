@@ -8,6 +8,7 @@ v0.0.1: Using pomodoro-tracker.com. Follow [Usage](#Usage) instructions to setup
 
 ## Usage
 Download [latest release](https://github.com/pabloubal/pomodnd/releases/latest)
+
 ***v0.0.1:***
 - [Add Pomodoro-tracker app to slack](https://pomodnd.slack.com/apps/AV95U922V-pomodoro-tracker).
 - Create a free account in [pomodoro-tracker.com](https://pomodoro-tracker.com/).
